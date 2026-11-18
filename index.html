@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fcfbf8">
+  <title>Мої витрати — Облік</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="expenses.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Облік</a>
+      <nav class="site-nav" aria-label="Основна навігація">
+        <a href="index.html" aria-current="page">Витрати</a>
+        <a href="registration.html">Реєстрація</a>
+      </nav>
+    </div>
+  </header>
+  <main class="dashboard">
+    <div class="page-heading">
+      <h1>Мої витрати</h1>
+      <time id="today"></time>
+    </div>
+
+    <div class="overview">
+      <section class="total-panel" aria-labelledby="total-heading">
+        <div class="total-content">
+          <h2 id="total-heading">Загалом витрачено</h2>
+          <p id="expense-total" class="total-amount">0,00 грн</p>
+          <p id="expense-count" class="total-count">Записів: 0</p>
+        </div>
+        <div class="receipt-art" aria-hidden="true">
+          <div class="receipt-back"></div>
+          <div class="receipt-paper">
+            <span class="receipt-currency">₴</span>
+            <span class="receipt-divider"></span>
+            <span class="receipt-line"></span>
+            <span class="receipt-line short"></span>
+            <span class="receipt-barcode"></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats-panel" aria-labelledby="stats-heading">
+        <h2 id="stats-heading">За категоріями</h2>
+        <ul id="category-stats" class="stats-list">
+          <li class="stat-row food" data-category="Їжа"><span>Їжа</span><span class="stat-track"><span class="stat-fill"></span></span><span class="stat-value">0,00 грн</span></li>
+          <li class="stat-row transport" data-category="Транспорт"><span>Транспорт</span><span class="stat-track"><span class="stat-fill"></span></span><span class="stat-value">0,00 грн</span></li>
+          <li class="stat-row shopping" data-category="Покупки"><span>Покупки</span><span class="stat-track"><span class="stat-fill"></span></span><span class="stat-value">0,00 грн</span></li>
+          <li class="stat-row other" data-category="Інше"><span>Інше</span><span class="stat-track"><span class="stat-fill"></span></span><span class="stat-value">0,00 грн</span></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="workspace">
+      <section class="entry-panel" aria-labelledby="entry-heading">
+        <h2 id="entry-heading">Нова витрата</h2>
+        <form id="expense-form" class="entry-form" novalidate>
+          <div class="field">
+            <label for="expense-name">Назва витрати</label>
+            <input id="expense-name" type="text" placeholder="Наприклад, обід" aria-describedby="name-error" required>
+            <small id="name-error" class="field-error"></small>
+          </div>
+          <div class="field">
+            <label for="expense-amount">Сума</label>
+            <div class="amount-input"><input id="expense-amount" type="text" inputmode="decimal" placeholder="0,00" aria-describedby="amount-unit amount-error" required><span id="amount-unit">грн</span></div>
+            <small id="amount-error" class="field-error"></small>
+          </div>
+          <div class="field">
+            <label for="expense-category">Категорія</label>
+            <select id="expense-category" aria-describedby="category-error" required>
+              <option value="">Оберіть категорію</option>
+              <option>Їжа</option><option>Транспорт</option><option>Покупки</option><option>Інше</option>
+            </select>
+            <small id="category-error" class="field-error"></small>
+          </div>
+          <button class="primary add-expense" type="submit"><span aria-hidden="true">+</span> Додати витрату</button>
+        </form>
+      </section>
+
+      <section class="journal" aria-labelledby="journal-heading">
+        <div class="journal-heading">
+          <h2 id="journal-heading">Журнал витрат</h2>
+          <button type="button" id="clear-expenses" class="clear-button" disabled>Очистити всі витрати</button>
+        </div>
+        <div class="journal-controls">
+          <div class="search-wrap">
+            <label class="sr-only" for="expense-search">Пошук за назвою</label>
+            <input type="search" id="expense-search" placeholder="Пошук за назвою">
+          </div>
+          <div>
+            <label class="sr-only" for="category-filter">Фільтр за категорією</label>
+            <select id="category-filter">
+              <option value="">Усі категорії</option>
+              <option>Їжа</option><option>Транспорт</option><option>Покупки</option><option>Інше</option>
+            </select>
+          </div>
+        </div>
+        <ul id="expense-list" class="expense-list"></ul>
+        <p id="list-empty" class="list-empty">Витрат ще немає. Додайте першу витрату.</p>
+      </section>
+    </div>
+    <p class="status" id="expense-status" role="status"></p>
+  </main>
+</body>
+</html>

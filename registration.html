@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Реєстрація — Облік</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="registration.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Облік</a>
+      <nav class="site-nav" aria-label="Основна навігація">
+        <a href="index.html">Витрати</a>
+        <a href="registration.html" aria-current="page">Реєстрація</a>
+      </nav>
+    </div>
+  </header>
+  <main class="registration-main">
+    <section class="registration-card" aria-labelledby="registration-title">
+      <h1 id="registration-title">Реєстрація</h1>
+      <p class="intro">Для навчальної реєстрації використайте вигадані дані. Усі поля обов’язкові.</p>
+      <form class="registration-form" method="post" novalidate>
+        <div class="field">
+          <label for="username">Ім’я користувача</label>
+          <input id="username" type="text" autocomplete="username" minlength="3" required aria-describedby="username-error">
+          <small class="field-error" id="username-error" aria-live="polite"></small>
+        </div>
+        <div class="field">
+          <label for="email">Електронна пошта</label>
+          <input id="email" type="email" autocomplete="email" required aria-describedby="email-error">
+          <small class="field-error" id="email-error" aria-live="polite"></small>
+        </div>
+        <div class="field">
+          <label for="password">Пароль</label>
+          <input id="password" type="password" autocomplete="new-password" minlength="8" required aria-describedby="password-error">
+          <small class="field-error" id="password-error" aria-live="polite"></small>
+        </div>
+        <div class="field">
+          <label for="confirm-password">Підтвердження пароля</label>
+          <input id="confirm-password" type="password" autocomplete="new-password" required aria-describedby="confirm-password-error">
+          <small class="field-error" id="confirm-password-error" aria-live="polite"></small>
+        </div>
+        <div class="check-field">
+          <label class="check-label" for="terms">
+            <input id="terms" type="checkbox" required aria-describedby="terms-error">
+            <span>Погоджуюсь з умовами</span>
+          </label>
+          <small class="field-error" id="terms-error" aria-live="polite"></small>
+        </div>
+        <button class="primary" type="submit">Зареєструватися</button>
+      </form>
+      <p class="success" role="status" tabindex="-1" hidden>Реєстрація успішна!</p>
+    </section>
+  </main>
+</body>
+</html>
